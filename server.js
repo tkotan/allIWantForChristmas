@@ -10,8 +10,8 @@ app.use(bodyParser.json());
 app.use(express.static('public'));
 
 //Controller
-const wishlistController = require('./controllers/wishlist.js');
-app.use('/wishlist', wishlistController);
+const christmasController = require('./controllers/christmas.js');
+app.use('/christmas', christmasController);
 
 //Port
 const port = process.env.PORT || 3000;
