@@ -4,7 +4,7 @@ app.controller('MyController', ['$http', function($http){
     const controller = this;
     this.items = [];
     this.purchased = false;
-    this.indexOfEditFormToShow = 1;
+    this.indexOfEditFormToShow;
 
 
     this.getItems = function(){
@@ -32,6 +32,10 @@ app.controller('MyController', ['$http', function($http){
             }
         }).then(
             function(response){
+                controller.name = "";
+                controller.price = "";
+                controller.description = "";
+                controller.purchased = false;
                 controller.getItems();
             },
             function(error){
@@ -54,7 +58,7 @@ app.controller('MyController', ['$http', function($http){
             data: {
               name: item.name,
               price: item.price,
-              description: item.description,
+              description: "",
               purchased: newPurchased
             }
         }).then(
