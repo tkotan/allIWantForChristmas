@@ -1,0 +1,20 @@
+html {
+  margin: 20px;
+}
+
+html, body {
+  background-color: #ff2833;
+}
+
+h1 {
+  font-family: 'Mountains of Christmas', cursive;
+}
+
+.container {
+  width: 80%;
+}
+
+#uniqueTextSelector {
+  font-family: 'Mountains of Christmas', cursive;
+  font-size: 28px;
+}
