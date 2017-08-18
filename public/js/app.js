@@ -3,7 +3,7 @@ const app = angular.module('ChristmasList', []);
 app.controller('MyController', ['$http', function($http){
     const controller = this;
     this.items = [];
-    this.purchased = false;
+    // this.purchased = false;
     this.indexOfEditFormToShow;
 
 
@@ -28,22 +28,20 @@ app.controller('MyController', ['$http', function($http){
                 name: this.name,
                 price: this.price,
                 description: this.description,
-                purchased: this.purchased
             }
         }).then(
             function(response){
                 controller.name = "";
                 controller.price = "";
                 controller.description = "";
-                controller.purchased = false;
+                // controller.purchased = false;
                 controller.getItems();
             },
             function(error){
 
             }
         );
-    }
-
+    },
     this.updateItem = function(item){
         let newPurchased;
         if(item.purchased === true){

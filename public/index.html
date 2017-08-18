@@ -6,37 +6,59 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js" charset="utf-8"></script>
     <script src="/js/app.js" charset="utf-8"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Mountains+of+Christmas" rel="stylesheet">
   </head>
+
+
+
   <body ng-controller="MyController as ctrl">
-        <h1>Christmas Wish List</h1>
-        <h3>Collection of Desirables</h3>
-        <ul>
-            <li
-                ng-class=" (item.purchased) ? 'purchased' : 'notPurchased' "
-                ng-repeat="item in ctrl.items">
-                    <span ng-click="ctrl.indexOfEditFormToShow = $index">{{item.name}} + {{item.purchased}}</span>
-                    <button ng-click="ctrl.deleteItem(item)">Delete This Item</button>
-                  
-                    <form ng-if="$index === ctrl.indexOfEditFormToShow" ng-submit="ctrl.editItem(item);">
-                        <input type="text" ng-model="ctrl.updatedName" placeholder="name" />
-                        <input type="text" ng-model="ctrl.updatedPrice" placeholder="price" />
-                        <input type="text" ng-model="ctrl.updatedDescription" placeholder="description" />
-                        Purchased: <input type="checkbox" ng-model="ctrl.purchased" />
-                        <input type="submit" value="Update">
-                    </form>
-            </li>
-        </ul>
-        <form ng-submit="ctrl.createItem();">
-            <h2>Create a new Item</h2>
-            <input type="text" ng-model="ctrl.name" placeholder="name" />
-              <br />
-            <input type="text" ng-model="ctrl.price" placeholder="price" />
-              <br />
-            <input type="text" ng-model="ctrl.description" placeholder="description" />
-              <br />
-            Purchased: <input type="checkbox" ng-model="ctrl.purchased"/>
-              <br />
-            <input type="submit" value="Create New Christmas Item">
-        </form>
-    </body>
+    <h1 class="text-center font-weight-bold">Christmas Wish List</h1>
+      <br/>
+    <div class="container">
+      <div class="row">
+          <div class="col-2"
+            ng-repeat="item in ctrl.items">
+            <!-- ng-class=" (item.purchased) ? 'purchased' : 'notPurchased' " -->
+            <span ng-click="ctrl.indexOfEditFormToShow = $index">
+              {{item.name}}
+            </span>
+              <br/>
+            <button ng-click="ctrl.deleteItem(item)">Delete</button>
+
+            <form ng-if="$index === ctrl.indexOfEditFormToShow" ng-submit="ctrl.editItem(item);">
+              <input type="text" ng-model="ctrl.updatedName" placeholder="name" />
+                <br/>
+              <input type="text" ng-model="ctrl.updatedPrice" placeholder="price" />
+                <br/>
+              <input type="text" ng-model="ctrl.updatedDescription" placeholder="description" />
+                <br/>
+<!-- Purchased: <input type="checkbox" ng-model="ctrl.purchased" />
+<br/> -->
+              <input type="submit" value="Update">
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <br/>
+    <br/>
+
+  <div class="text-center">
+    <span id="uniqueTextSelector">Add new item:</span> <input type="checkbox" ng-model="creator">
+    <div ng-show="creator">
+      <form ng-submit="ctrl.createItem();">
+        <input type="text" ng-model="ctrl.name" placeholder="name" />
+          <br />
+        <input type="text" ng-model="ctrl.price" placeholder="price" />
+          <br />
+        <input type="text" ng-model="ctrl.description" placeholder="description" />
+          <br />
+        <input type="submit" value="Create New Christmas Item">
+      </form>
+    </div>
+  </div>
+
+  </body>
 </html>
