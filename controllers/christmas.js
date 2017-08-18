@@ -27,7 +27,7 @@ router.delete('/:id', (req, res)=>{
 
 //Update an item
 router.put('/:id', (req, res)=>{
-    Christmas.findByIdAndUpdate(req.params.id, req.body, {new:true}, (err, updatedTodo)=>{
+    Christmas.findByIdAndUpdate(req.params.id, req.body, {new:true}, (err, updatedItem)=>{
         res.json(updatedItem);
     });
 });

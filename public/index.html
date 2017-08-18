@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html ng-app='ChristmasList'>
+  <head>
+    <meta charset="utf-8">
+    <title>My Christmas List</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js" charset="utf-8"></script>
+    <script src="/js/app.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+  </head>
+  <body ng-controller="MyController as ctrl">
+        <h1>Christmas Wish List</h1>
+        <h3>Collection of Desirables</h3>
+        <ul>
+            <li
+                ng-class=" (item.purchased) ? 'purchased' : 'notPurchased' "
+                ng-repeat="item in ctrl.items">
+                    <span ng-click="ctrl.indexOfEditFormToShow = $index">{{item.name}} + {{item.purchased}}</span>
+                    <button ng-click="ctrl.deleteItem(item)">Delete This Item</button>
+                  
+                    <form ng-if="$index === ctrl.indexOfEditFormToShow" ng-submit="ctrl.editItem(item);">
+                        <input type="text" ng-model="ctrl.updatedName" placeholder="name" />
+                        <input type="text" ng-model="ctrl.updatedPrice" placeholder="price" />
+                        <input type="text" ng-model="ctrl.updatedDescription" placeholder="description" />
+                        Purchased: <input type="checkbox" ng-model="ctrl.purchased" />
+                        <input type="submit" value="Update">
+                    </form>
+            </li>
+        </ul>
+        <form ng-submit="ctrl.createItem();">
+            <h2>Create a new Item</h2>
+            <input type="text" ng-model="ctrl.name" placeholder="name" />
+              <br />
+            <input type="text" ng-model="ctrl.price" placeholder="price" />
+              <br />
+            <input type="text" ng-model="ctrl.description" placeholder="description" />
+              <br />
+            Purchased: <input type="checkbox" ng-model="ctrl.purchased"/>
+              <br />
+            <input type="submit" value="Create New Christmas Item">
+        </form>
+    </body>
+</html>

@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const christmasSchema = mongoose.Schema({
     name: String,
-    price: Number,
+    price: String,
     description: String,
     purchased: Boolean
 });
